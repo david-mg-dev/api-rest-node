@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { getRedirect, getIndex } from '../../controller/familyController'
+import { validateToken } from '../../middleware/auth'
 
 const router = Router()
 /**
@@ -8,6 +9,6 @@ const router = Router()
 
 router
   .get('/', getRedirect)
-  .get('/family', getIndex)
+  .get('/family', validateToken, getIndex)
 
 export { router }
